@@ -1,0 +1,44 @@
+{
+  "name": "saucedemo-cypress-automation",
+  "version": "1.0.0",
+  "description": "End-to-end test automation framework for SauceDemo using Cypress and TypeScript.",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run",
+    "tsc:init": "tsc --init"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kplakosh/saucedemo-testautomation-cypress.git"
+  },
+  "keywords": [
+    "cypress",
+    "typescript",
+    "test",
+    "automation",
+    "end-to-end",
+    "testing",
+    "e2e",
+    "cypress",
+    "framework",
+    "saucedemo",
+    "quality",
+    "assurance",
+    "cypress",
+    "tests",
+    "page",
+    "object",
+    "model"
+  ],
+  "author": "Kateryna Plakosh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kplakosh/saucedemo-testautomation-cypress/issues"
+  },
+  "homepage": "https://github.com/kplakosh/saucedemo-testautomation-cypress#readme",
+  "devDependencies": {
+    "cypress": "^14.4.1",
+    "typescript": "^5.8.3"
+  }
+}
