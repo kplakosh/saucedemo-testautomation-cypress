@@ -52,7 +52,6 @@ This framework covers the following areas of the SauceDemo web app:
 ## Folder Structure
 
 <pre lang="markdown"> <code> 
-  ```text 
   saucedemo-testautomation-cypress/ 
   ├── cypress/ 
   │ ├── e2e/ # Test specs 
@@ -69,7 +68,6 @@ This framework covers the following areas of the SauceDemo web app:
   ├── cypress.config.ts 
   ├── package.json 
   └── README.md 
-  ``` 
 </code> </pre>
 
 ---
