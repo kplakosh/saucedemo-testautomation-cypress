@@ -51,22 +51,7 @@ This framework covers the following areas of the SauceDemo web app:
 
 ## Folder Structure
 
-saucedemo-testautomation-cypress/
-├── cypress/
-│ ├── e2e/ # Test specs
-│ │ ├── login.cy.ts
-│ │ └── inventory-standard-user.cy.ts
-│ ├── fixtures/ # Test data (users.json)
-│ ├── pages/ # Page Object Models
-│ │ └── InventoryPage.ts
-│ └── support/ # Custom commands + setup
-│ ├── commands.ts
-│ ├── e2e.ts
-│ └── index.d.ts
-├── tsconfig.json
-├── cypress.config.ts
-├── package.json
-└── README.md
+<pre lang="markdown"> <code> ```text saucedemo-testautomation-cypress/ ├── cypress/ │ ├── e2e/ # Test specs │ │ ├── login.cy.ts │ │ └── inventory-standard-user.cy.ts │ ├── fixtures/ # Test data (users.json) │ ├── pages/ # Page Object Models │ │ └── InventoryPage.ts │ └── support/ # Custom commands + setup │ ├── commands.ts │ ├── e2e.ts │ └── index.d.ts ├── tsconfig.json ├── cypress.config.ts ├── package.json └── README.md ``` </code> </pre>
 
 ---
 
@@ -74,11 +59,17 @@ saucedemo-testautomation-cypress/
 
 ### 1. Install dependencies
 
-npm install 2. Open Cypress Test Runner
-npx cypress open 3. Run tests headlessly
+npm install 
+
+### 2. Open Cypress Test Runner
+
+npx cypress open 
+
+### 3. Run tests headlessly
+
 npx cypress run
 
-### Custom Commands
+## Custom Commands
 
 cy.login(username, password)
 cy.logout()
