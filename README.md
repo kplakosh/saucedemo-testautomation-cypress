@@ -39,8 +39,8 @@ This framework covers the following areas of the SauceDemo web app:
 
 ### Product Detail Page
 
-- Product name, price, description verification
-- "Add to Cart" interaction from detail page
+- Product name, price, and description verification
+- "Add to Cart" interaction from the detail page
 
 ### Cart Page
 
@@ -51,7 +51,26 @@ This framework covers the following areas of the SauceDemo web app:
 
 ## Folder Structure
 
-<pre lang="markdown"> <code> ```text saucedemo-testautomation-cypress/ ├── cypress/ │ ├── e2e/ # Test specs │ │ ├── login.cy.ts │ │ └── inventory-standard-user.cy.ts │ ├── fixtures/ # Test data (users.json) │ ├── pages/ # Page Object Models │ │ └── InventoryPage.ts │ └── support/ # Custom commands + setup │ ├── commands.ts │ ├── e2e.ts │ └── index.d.ts ├── tsconfig.json ├── cypress.config.ts ├── package.json └── README.md ``` </code> </pre>
+<pre lang="markdown"> <code> 
+  ```text 
+  saucedemo-testautomation-cypress/ 
+  ├── cypress/ 
+  │ ├── e2e/ # Test specs 
+  │ │ ├── login.cy.ts 
+  │ │ └── inventory-standard-user.cy.ts 
+  │ ├── fixtures/ # Test data (users.json) 
+  │ ├── pages/ # Page Object Models 
+  │ │ └── InventoryPage.ts 
+  │ └── support/ # Custom commands + setup 
+  │ ├── commands.ts 
+  │ ├── e2e.ts 
+  │ └── index.d.ts 
+  ├── tsconfig.json 
+  ├── cypress.config.ts 
+  ├── package.json 
+  └── README.md 
+  ``` 
+</code> </pre>
 
 ---
 
