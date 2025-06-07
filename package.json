@@ -6,7 +6,9 @@
   "scripts": {
     "cy:open": "npx cypress open",
     "cy:run": "npx cypress run",
-    "tsc:init": "tsc --init"
+    "tsc:init": "tsc --init",
+    "format": "prettier --write .",
+    "lint": "eslint . --ext .ts"
   },
   "repository": {
     "type": "git",
@@ -38,7 +40,15 @@
   },
   "homepage": "https://github.com/kplakosh/saucedemo-testautomation-cypress#readme",
   "devDependencies": {
+    "@eslint/js": "^9.28.0",
+    "@typescript-eslint/eslint-plugin": "^8.33.1",
+    "@typescript-eslint/parser": "^8.33.1",
     "cypress": "^14.4.1",
-    "typescript": "^5.8.3"
-  }
+    "eslint": "^9.28.0",
+    "eslint-plugin-cypress": "^5.1.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.33.1"
+  },
+  "type": "module"
 }

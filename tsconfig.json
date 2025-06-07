@@ -11,8 +11,5 @@
     "resolveJsonModule": true,
     "noEmit": true
   },
-  "include": [
-    "cypress/**/*.ts", 
-    "cypress/support/index.d.ts"
-  ]
+  "include": ["cypress/**/*.ts", "cypress/support/index.d.ts"]
 }
