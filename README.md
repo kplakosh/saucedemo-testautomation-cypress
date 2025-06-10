@@ -30,45 +30,34 @@ This framework covers the following areas of the SauceDemo web app:
 
 ### Inventory Page
 
-- Product listing structure validation
-- Add/remove to cart workflows
-- Cart badge updates
-- Sorting by name and price (including sort verification)
-- Product detail navigation via name and image
-- Layout responsiveness (e.g., iPhone view)
+- Product listing validation (name, price, image, button)
+- Cart interactions (add, remove, badge updates)
+- Sorting logic (A–Z, Z–A, low-to-high, high-to-low)
+- Full sort order verification
+- Product detail navigation (name and image click-through)
+- Button state toggling (Add ↔ Remove)
+- Cart persistence after navigation
+- Viewport responsiveness: iPhone 6, iPad, desktop
+- Layout validations for `visual_user`:
+  - Image sizing (mobile & desktop)
+  - Font consistency
+  - Button alignment & styling
+  - Product description overflow
+  - Empty cart icon position
+  - Correct image shown per item
 
-### Product Detail Page
-
-- Product name, price, and description verification
-- "Add to Cart" interaction from the detail page
+### Role-Based Testing
+- `standard_user`: Full user journey and expected to pass all tests
+- `locked_out_user`: Blocked at login, access denied
+- `problem_user`: UI or functional issues expected — tracked per test
+- `performance_glitch_user`: Performance timing issues (delayed loading)
+- `error_user`: Application-level errors, runtime failures
+- `visual_user`: Visual bugs, CSS layout issues across pages
 
 ### Cart Page
 
 - Cart state persistence
 - Navigation and item validation (upcoming)
-
----
-
-## Folder Structure
-
-<pre lang="markdown"> <code> 
-  saucedemo-testautomation-cypress/ 
-  ├── cypress/ 
-  │ ├── e2e/ # Test specs 
-  │ │ ├── login.cy.ts 
-  │ │ └── inventory-standard-user.cy.ts 
-  │ ├── fixtures/ # Test data (users.json) 
-  │ ├── pages/ # Page Object Models 
-  │ │ └── InventoryPage.ts 
-  │ └── support/ # Custom commands + setup 
-  │ ├── commands.ts 
-  │ ├── e2e.ts 
-  │ └── index.d.ts 
-  ├── tsconfig.json 
-  ├── cypress.config.ts 
-  ├── package.json 
-  └── README.md 
-</code> </pre>
 
 ---
 

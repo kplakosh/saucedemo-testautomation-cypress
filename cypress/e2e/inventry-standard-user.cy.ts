@@ -8,7 +8,7 @@ describe('Standard User – Inventory Page Tests', () => {
     inventoryPage.verifyOnInventoryPage();
   });
 
-  // Page Load & Product Display Tests
+  // === UI Rendering & Layout ===
 
   it('displays 6 products with name, price, image, and button', () => {
     inventoryPage.getAllInventoryItems().should('have.length', 6);
@@ -22,7 +22,7 @@ describe('Standard User – Inventory Page Tests', () => {
 
   it('renders inventory correctly on mobile devices', () => {
     cy.viewport('iphone-6');
-    cy.get('.inventory_item').should('have.length', 6);
+    inventoryPage.getAllInventoryItems().should('have.length', 6);
   });
 
   it('displays all prices in correct currency format', () => {
@@ -34,7 +34,21 @@ describe('Standard User – Inventory Page Tests', () => {
     });
   });
 
-  // Sorting Functionality Tests
+    it('renders correctly on tablet viewport', () => {
+    cy.viewport('ipad-2');
+    inventoryPage.getAllInventoryItems().should('have.length', 6);
+  });
+
+  it('renders correctly on desktop viewport', () => {
+    cy.viewport(1280, 720);
+    inventoryPage.getAllInventoryItems().should('have.length', 6);
+  });
+
+  it('displays cart icon in the header', () => {
+    cy.get('.shopping_cart_link').should('be.visible');
+  });
+
+  // === Sorting Functionality ===
 
   it('sorts products from A to Z and Z to A', () => {
     cy.get('[data-test="product-sort-container"]').should('exist');
@@ -46,6 +60,10 @@ describe('Standard User – Inventory Page Tests', () => {
       .getAllInventoryItems()
       .first()
       .should('contain.text', 'Test.allTheThings() T-Shirt (Red)');
+  });
+
+  it('defaults to sort A to Z on page load', () => {
+    cy.get('[data-test="product-sort-container"]').should('have.value', 'az');
   });
 
   it('sorts products by price low to high and high to low', () => {
@@ -68,7 +86,7 @@ describe('Standard User – Inventory Page Tests', () => {
       .should('be.gt', 40);
   });
 
-  it('verifies full price order for low to high sort', () => {
+  it('validates complete product order when sorted by price low to high', () => {
     inventoryPage.sortBy('lohi');
     inventoryPage.getAllInventoryItems().then(($items) => {
       const prices = [...$items].map((el) => {
@@ -80,7 +98,7 @@ describe('Standard User – Inventory Page Tests', () => {
     });
   });
 
-  // Card Interaction Tests
+  // === Cart Interactions ===
 
   it('adds a product to the cart and updates badge', () => {
     inventoryPage.addItemToCartByName('Sauce Labs Backpack');
@@ -102,6 +120,10 @@ describe('Standard User – Inventory Page Tests', () => {
   it('toggles between Add to Cart and Remove buttons', () => {
     const product = 'Sauce Labs Backpack';
     inventoryPage.addItemToCartByName(product);
+    inventoryPage.getItemButtonByName(product).should('have.text', 'Remove');
+
+    inventoryPage.removeItemFromCartByName(product);
+    inventoryPage.getItemButtonByName(product).should('have.text', 'Add to cart');
   });
 
   it('retains cart state when navigating away and back', () => {
@@ -112,7 +134,18 @@ describe('Standard User – Inventory Page Tests', () => {
     inventoryPage.getCartBadgeCount().should('contain.text', '1');
   });
 
-  // Product Detail Page Navigation Tests
+  it('does not show cart badge when cart is empty', () => {
+    inventoryPage.getCartBadgeCount().should('not.exist');
+  });
+
+  it('retains Add/Remove state when navigating back from product detail', () => {
+    inventoryPage.addItemToCartByName('Sauce Labs Backpack');
+    cy.contains('.inventory_item_name', 'Sauce Labs Backpack').click();
+    cy.go('back');
+    inventoryPage.getItemButtonByName('Sauce Labs Backpack').should('have.text', 'Remove');
+  });
+
+  // === Product Detail Page ===
 
   it('navigates to product detail page via product name', () => {
     cy.contains('.inventory_item_name', 'Sauce Labs Backpack').click();
@@ -134,7 +167,13 @@ describe('Standard User – Inventory Page Tests', () => {
     cy.get('button').should('contain.text', 'Add to cart');
   });
 
-  // Cart Page Navigation Tests
+  it('adds product to cart from product detail page', () => {
+    cy.contains('.inventory_item_name', 'Sauce Labs Backpack').click();
+    cy.get('button').contains('Add to cart').click();
+    inventoryPage.getCartBadgeCount().should('contain.text', '1');
+  });
+
+  // === Cart Page Navigation ===
 
   it('navigates to cart page from header', () => {
     inventoryPage.goToCart();

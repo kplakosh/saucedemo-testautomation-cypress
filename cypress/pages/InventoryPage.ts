@@ -1,8 +1,8 @@
 export class InventoryPage {
   verifyOnInventoryPage() {
-    cy.url().should('include', '/inventory.html');
-    cy.get('.inventory_list', { timeout: 10000 }).should('exist');
-  }
+  cy.url().should('include', '/inventory.html');
+  cy.get('.inventory_item', { timeout: 10000 }).should('have.length.at.least', 1);
+}
 
   getAllInventoryItems() {
     return cy.get('.inventory_item');
@@ -13,7 +13,7 @@ export class InventoryPage {
   }
 
   addItemToCartByName(name: string) {
-    this.getItemByName(name)
+    this.getItemByName(name) 
       .find('button')
       .contains(/add to cart/i)
       .click();
